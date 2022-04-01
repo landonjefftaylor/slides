@@ -1,0 +1,164 @@
+% This is my USU Beamer package
+%
+% Called beamUSU
+%
+% By Landon Taylor
+% landon.jeffrey.taylor@usu.edu
+%
+% Edited April 1, 2022
+% 
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+
+\ProvidesPackage{beamUSU}
+[2022-04-01 A USU Engineering Beamer Template]
+
+% Package requirements
+\RequirePackage{graphicx}
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{geometry}
+\RequirePackage{parskip}
+\RequirePackage{beamerthemesplit}
+\RequirePackage{unicode-math}
+\RequirePackage{polyglossia}
+
+% Font Packages
+\RequirePackage[sfdefault]{roboto}
+\RequirePackage[T1]{fontenc}
+\usefonttheme[onlymath]{serif}
+
+% Assumptions about institution
+\institute{Utah State University}
+\titlegraphic{
+	\includegraphics[width=5cm]{logo.png}
+}
+
+% Custom colors
+\definecolor{usuBlue}{RGB}{0,51,89}
+\definecolor{darkUSU}{RGB}{0,27,48}
+
+% Color and theme settings
+\usetheme{Copenhagen}
+\setbeamercolor{structure}{fg=usuBlue}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{theorem}[center]
+%\usemintedstyle{friendly}
+\useinnertheme{rectangles}
+\setbeamercolor{page in head/foot}{bg=darkUSU, fg=white}%
+
+% Footer settings
+\setbeamertemplate{footline}%
+{%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.2\paperwidth,ht=2.5ex,dp=1.125ex]{institute in head/foot}%
+			\centering \textmd{\insertinstitute}		\end{beamercolorbox}% 
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1.125ex]{author in head/foot}
+			\centering \textmd{\insertshortauthor}		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.50\paperwidth,ht=2.5ex,dp=1.125ex]{title in head/foot}
+			\centering \textmd{\insertshorttitle}		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.05\paperwidth,ht=2.5ex,dp=1.125ex]{page in head/foot}
+			\centering \textmd{\insertframenumber}		\end{beamercolorbox}%
+	}%
+	\vskip0pt%
+}
+
+% Slide title settings
+\setbeamertemplate{frametitle}{
+	\nointerlineskip%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex,center]{frametitle}
+		\usebeamerfont{frametitle}\insertframetitle	\end{beamercolorbox}
+}
+
+% Title Slide settings
+\defbeamertemplate*{title page}{usudef}[1][]
+{
+	\vbox{}
+	\vfill
+	\begingroup
+	\centering
+	\begin{beamercolorbox}[sep=8pt,center,#1]{title}
+		\usebeamerfont{title}\inserttitle\par%
+		\ifx\insertsubtitle\@empty\relax%
+		\else%
+		\vskip0.25em%
+		{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+		\fi%     
+	\end{beamercolorbox}%
+	\vskip1.5em\par
+	\begin{beamercolorbox}[sep=-4pt,center,#1]{author}
+		\usebeamerfont{author}\insertauthor
+	\end{beamercolorbox}%
+%	\begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+%		\usebeamerfont{institute}\insertinstitute
+%	\end{beamercolorbox}%
+	\begin{beamercolorbox}[sep=8pt,center,#1]{date}
+		\usebeamerfont{date}{\footnotesize\textit{\insertdate}}
+	\end{beamercolorbox}\vskip0.5em
+	{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+	\endgroup
+	\vfill
+}
+\setbeamertemplate{title page}[usudef][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]\makeatother
+
+% Easy Slide Styles
+\newcommand {\image}[1] {
+	\begin{center}
+		\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{#1}
+	\end{center}
+}
+\newcommand {\images}[2] {
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\begin{center}
+				\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{#1}
+			\end{center}
+		\end{minipage}
+		\begin{minipage}{0.1\textwidth}
+			~
+		\end{minipage}
+		\begin{minipage}{0.4\textwidth}
+			\begin{center}
+				\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{#2}
+			\end{center}
+		\end{minipage}
+	\end{center}
+}
+\newcommand {\imagedesc}[2] {
+	\begin{center}
+		\begin{minipage}{0.40\textwidth}
+			\begin{center}
+				\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{#1}
+			\end{center}
+		\end{minipage}
+		\begin{minipage}{0.02\textwidth}
+			~
+		\end{minipage}
+		\begin{minipage}{0.56\textwidth}
+			\begin{flushleft}
+				#2
+			\end{flushleft}
+		\end{minipage}
+	\end{center}
+}
+\newcommand {\cols}[2] {
+	\begin{center}
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushleft}
+				#1
+			\end{flushleft}
+		\end{minipage}
+		\hfill\vline\hfill
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushleft}
+				#2
+			\end{flushleft}
+		\end{minipage}
+	\end{center}
+}
+
+\endinput
+%%
+%% End of file `beamUSU.sty'.
