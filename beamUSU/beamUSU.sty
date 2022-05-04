@@ -128,15 +128,15 @@
 }
 \newcommand {\imagedesc}[2] {
 	\begin{center}
-		\begin{minipage}{0.40\textwidth}
+		\begin{minipage}{0.45\textwidth}
 			\begin{center}
-				\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{#1}
+				\includegraphics[width=\textwidth,height=0.95\textheight,keepaspectratio]{#1}
 			\end{center}
 		\end{minipage}
 		\begin{minipage}{0.02\textwidth}
 			~
 		\end{minipage}
-		\begin{minipage}{0.56\textwidth}
+		\begin{minipage}{0.51\textwidth}
 			\begin{flushleft}
 				#2
 			\end{flushleft}
@@ -158,6 +158,23 @@
 		\end{minipage}
 	\end{center}
 }
+
+% Section things
+
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+\setbeamertemplate{headline}{}
+
+
+
+% Footnote things
+
+%\setbeamerfont{footnote}{\usebeamerfont{frametitle}}
 
 \endinput
 %%
